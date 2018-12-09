@@ -37,7 +37,7 @@ part1 = input => {
     })
 
     return twoCount*threeCount;
-    
+
 }
 
 //================================
@@ -45,8 +45,31 @@ part1 = input => {
 //================================
 
 part2 = input => {
-    return "\nNo solution yet.";
-}
+    
+    // For each ID, compare to each other ID. If one other ID differs from current ID by exactly one character (in same position), then the the ID with that character removed is your final solution.
+    let result = null;
+
+    for (let i=0; i < input.length; i++) {
+        let id = input[i];
+        for (let j=0; j < input.length; j++) {
+            let secondId = input[j];
+            let mismatchCount = 0;
+            let lastMismatchedPos = 0;
+            for (let k=0; k < secondId.length; k++) {
+                if (id[k] !== secondId[k]) {
+                    mismatchCount++
+                    lastMismatchedPos = k; // mismatched char in current id
+                }
+            }
+            if (mismatchCount == 1) { 
+                result = id.slice(0, lastMismatchedPos) + id.slice(lastMismatchedPos+1, id.length);
+            }
+        };
+    };
+
+    return result;
+
+};
 
 //================================
 // OUTPUTTING SOLUTIONS

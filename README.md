@@ -15,7 +15,7 @@ Calling any day's js file (e.g. `$ node 01/01.js`) via command line should get t
 ```
 [✔] [✔] Day 01
 
-[✔] [ ] Day 02
+[✔] [✔] Day 02
 
 [ ] [ ] Day 03
 
