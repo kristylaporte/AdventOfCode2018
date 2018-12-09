@@ -20,30 +20,24 @@ let inputArray = getInput.breakLines(inputRaw);
 //================================
 
 part1 = input => {
+
     twoCount = 0;
     threeCount = 0;
-    idHasTwo = id => {
-        // Just need to see if id (str) contains any character exactly twice. (Doesn't matter how MANY appear exactly twice, just if at least one does or not.)
-        for (let i=0; i < id.length; i++) {
-            if ((id.split(id[i]).length-1) == 2) return true;
-        }
-        return false;
-    }
 
-    idHasThree = id => {
-        // Just need to see if id (str) contains any character exactly thrice. (Doesn't matter how MANY appear exactly twice, just if at least one does or not.)
+    idHasCount = (id, count) => {
         for (let i=0; i < id.length; i++) {
-            if ((id.split(id[i]).length-1) == 3) return true;
+            if ((id.split(id[i]).length-1) == count) return true;
         }
         return false;
     }
     
     input.forEach(function(id, i) {
-        twoCount+= (idHasTwo(id) ? 1 : 0);
-        threeCount+= (idHasThree(id) ? 1 : 0);
+        twoCount+= (idHasCount(id, 2) ? 1 : 0);
+        threeCount+= (idHasCount(id, 3) ? 1 : 0);
     })
 
     return twoCount*threeCount;
+    
 }
 
 //================================
